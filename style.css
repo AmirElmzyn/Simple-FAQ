@@ -132,6 +132,29 @@ body{
 }
 
 .attribution {
+    bottom: 0;
+    z-index: 3;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    position: absolute;
+    text-align: center;
+    background-color: transparent;
+    color: hsl(292, 42%, 14%);
+}
+
+.attribution span {
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--Purple-600);
+}
+
+.attribution::selection {
+    background-color: var(--Purple-600);
+    color: var(--Purple-100);
+}
+
+/* .attribution {
     padding: 5px;
     font-size: 11px;
     text-align: center;
@@ -144,7 +167,7 @@ body{
 .attribution::selection {
     background-color: var(--Purple-600);
     color: var(--Purple-100);
-}
+} */
 
 @media (max-width: 768px) {
     .faq-bg {
