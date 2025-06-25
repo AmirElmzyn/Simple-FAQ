@@ -1,24 +1,30 @@
-function toggleFAQ(ele){
-    const faqItem = ele.parentElement;
-    const faqAnswer = faqItem.querySelector(".faq-answer");
-    const faqToggle = faqItem.querySelector(".faq-toggle");
-    const allFaqs = document.querySelectorAll(".faq-item");
+const panels = document.querySelectorAll(".panel");
+const accs = document.querySelectorAll(".accordian");
+const plus = document.querySelectorAll(".plus-icon");
+const minus = document.querySelectorAll(".minus-icon");
 
-    allFaqs.forEach((item) => {
-        if(item !== faqItem){
-            item.classList.remove("active");
-            item.querySelector(".faq-answer").classList.remove("active");
-            item.querySelector(".faq-toggle").classList.remove("active");
-        }
-    });
-
-    faqItem.classList.toggle("active");
-    faqAnswer.classList.toggle("active");
-    faqToggle.classList.toggle("active");
+function toggleAcc(i){
+    plus[i].classList.toggle("active");
+    minus[i].classList.toggle("active");
+    panels[i].classList.toggle("active");
 };
-const FAQ = document.querySelectorAll(".faq-question")
-FAQ.forEach((question) => {
-    question.addEventListener("click", function(){
-        toggleFAQ(this);
-    })
-})
+
+accs.forEach((btn, i) => {
+    btn.onclick = () => {
+        toggleAcc(i);
+    }
+});
+
+plus.forEach((icon, i) => {
+    icon.onclick = () => {
+        toggleAcc(i);
+    }
+});
+
+minus.forEach((icon, i) => {
+    icon.onclick = () => {
+        toggleAcc(i);
+    }
+});
+
+document.querySelector("#default").click();
