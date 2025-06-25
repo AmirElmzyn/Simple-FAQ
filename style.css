@@ -4,204 +4,108 @@
     box-sizing: border-box;
 }
 :root{
-    --my-White: hsl(0, 100%, 100%);
-    --Purple-100: hsl(275, 100%, 97%);
-    --Purple-600: hsl(292, 16%, 49%);
-    --Purple-950: hsl(292, 42%, 14%);
+    --purple-color: #ad28eb;
+    --my-white: hsl(0, 100%, 100%);
+    --light-pink: hsl(275, 100%, 97%);
+    --dark-purple: hsl(292, 42%, 14%);
+    --grayish-purple: hsl(292, 16%, 49%);
 }
-body{
-    font-family: "Work Sans", sans-serif;
-    min-height: 100dvh;
-    max-width: 100dvw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+::selection{
+    color: var(--light-pink);
+    background-color: var(--grayish-purple);
+}
+html{
+    height: 100vh;
     font-size: 16px;
-    overflow: hidden;
-    position: relative;
-    background-color: var(--my-White);
+    font-family: "Work Sans", sans-serif;
+    background: url(images/background-pattern-desktop.svg) var(--light-pink) no-repeat;
+    background-size: 100%;
 }
-.faq-bg{
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    width: 100%;
-    pointer-events: none;
+.card{
+    display: block;
+    max-width: 500px;
+    border-radius: 10px;
+    margin: 140px auto;
+    padding: 15px 20px 5px;
+    background-color: var(--my-white);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
-.faq-container{
-    position: relative;
-    background-color: var(--my-White);
-    width: 100%;
-    max-width: 600px;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    z-index: 2;
+.title{
     display: flex;
-    flex-direction: column;
+    margin: 15px 0;
+    font-size: 20px;
+    font-weight: 700;
+    flex-direction: row;
+    color: var(--dark-purple);
 }
-.faq-header{
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 32px;
-    pointer-events: none;
+.title img{
+    margin-right: 10px;
 }
-.faq-icon{
-    width: 40px;
-    height: 40px;
-    background: url(../images/icon-star.svg);
-    border-radius: 8px;
-}
-.faq-title{
-    font-size: 70px;
-    font-weight: bold;
-    color: var(--Purple-950);
-}
-.faq-title::selection {
-    background-color: var(--Purple-600);
-    color: var(--Purple-100);
-}
-.faq-item{
-    width: 100%;
-    border-bottom: 1px solid #e5e7eb;
-    padding: 24px 0;
-    display: flex;
-    flex-direction: column;
-}
-.faq-item:nth-last-of-type(2){
-    border-bottom: none;
-}
-.faq-question{
+.faqs-btn{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 16px;
-    cursor: pointer;
 }
-.faq-question p{
-    flex: 1;
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--Purple-950);
-    line-height: 1.4;
-}
-.faq-question p::selection {
-    color: var(--Purple-100);
-    background-color: var(--Purple-600);
-}
-.faq-toggle{
-    width: 32px;
-    height: 32px;
-    flex-shrink: 0;
-    background-size: contain;
-    background-position: center;
-    background: url(../images/icon-plus.svg);
-    transition: all 0.3s ease-in-out;
-}
-.faq-toggle.active{
-    background: url(../images/icon-minus.svg);
-}
-.faq-answer{
-    display: none;
-    padding: 20px 0 0 0;
-    line-height: 1.6;
+.accordian{
+    border: none;
+    outline: none;
     font-size: 16px;
-    color: var(--Purple-600);
-    font-weight: 300;
-}
-.faq-answer::selection {
-    color: var(--Purple-950);
-    background-color: var(--Purple-100);
-}
-.faq-answer.active{
-    display: block;
-    animation: fadeIn 0.5s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to{
-        opacity: 1;
-    }
-}
-
-.attribution {
-    bottom: 0;
-    z-index: 3;
-    padding: 10px;
-    font-size: 14px;
-    font-weight: 400;
-    position: absolute;
-    text-align: center;
-    background-color: transparent;
-    color: hsl(292, 42%, 14%);
-}
-
-.attribution span {
+    text-align: left;
     font-weight: 700;
-    text-decoration: none;
-    color: var(--Purple-600);
+    transition: 0.5s;
+    background: transparent;
+    color: var(--dark-purple);
+}
+.accordian:hover{
+    cursor: pointer;
+    color: var(--purple-color);
+}
+.plus-icon {
+    display: block;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.plus-icon.active {
+    display: none;
+}
+.minus-icon {
+    display: none;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.minus-icon.active {
+    display: block;
+}
+.panel{
+    height: 0;
+    margin: 15px 0;
+    overflow: hidden;
+    transition: 0.5s;
+    font-weight: 400;
+    color: var(--grayish-purple);
+    border-bottom: 1px solid var(--light-pink);
+}
+.panel:last-of-type{
+    border-bottom: none;
+}
+.panel.active{
+    height: 100%;
+}
+.panel p{
+    line-height: 1.6;
+    margin-bottom: 15px;
 }
 
-.attribution::selection {
-    background-color: var(--Purple-600);
-    color: var(--Purple-100);
-}
-
-/* .attribution {
-    padding: 5px;
-    font-size: 11px;
-    text-align: center;
-    pointer-events: none;
-}
-.attribution a {
-    color: var(--Purple-600);
-    text-decoration: none;
-}
-.attribution::selection {
-    background-color: var(--Purple-600);
-    color: var(--Purple-100);
-} */
-
-@media (max-width: 768px) {
-    .faq-bg {
-        background: url(../images/background-pattern-mobile.svg);
-        height: 50%;
-        }
-    .faq-container{
-        width: 100%;
+@media (max-width: 375px) {
+    html{
+        padding: 0 20px;
+        background: url(images/background-pattern-mobile.svg) var(--light-pink) no-repeat;
     }
-    .faq-header {
-        margin-bottom: 10px;
+    .title{
+        font-size: 16px;
     }
-    .faq-icon {
-        width: 38px;
-        height: 38px;
-    }
-    .faq-title {
-        font-size: 50px;
-        font-weight: 700;
-    }
-    .faq-item{
-        padding: 20px 10px;
-    }
-    .faq-question p {
-        font-size: 14px;
-        gap: 12px;
-    }
-    .faq-toggle{
-        padding: 15px;
-    }
-}
-@media (min-width: 768px) {
-    .faq-bg {
-        background: url(../images/background-pattern-desktop.svg);
-        height: 50%;
+    .accordian{
+        max-width: 80%;
+        font-size: 15px;
     }
 }
